@@ -1,61 +1,114 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
-import { useLocation } from "react-router-dom";
-import { IconButton } from "@chakra-ui/react";
-import { MenuIcon } from "../../utils";
-import { Button } from "../ui/button";
-import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../ui/menu";
+"use client"; // Ensure this is a client component
+
+import Link from "next/link";
+import DarkModeSwitcher from "./DarkModeSwitcher";
+import DropdownUser from "./DropdownUser";
+import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useAccount, useDisconnect } from "wagmi";
 
-interface HeaderProps {
-  showFlag: boolean;
-  setShowFlag: any;
-}
+const Header = (props: {
+  sidebarOpen: string | boolean | undefined;
+  setSidebarOpen: (arg0: boolean) => void;
+  setConnected: (arg0: boolean) => void;
+}) => {
+  // Directly call useRouter and usePathname without condition
+  const router = useRouter();
+  const pathname = usePathname(); // returns the current path
+  const [curPath, setCurPath] = useState("");
 
-const shortenAddress = (address: string, chars: number) => {
-  if (address) return `${address.slice(0, chars)}...${address.slice(-chars)}`;
-};
+  const { isConnected, chainId, address } = useAccount();
 
-const Header = ({ showFlag, setShowFlag }: HeaderProps) => {
-  const { address } = useAccount();
-  const { disconnectAsync } = useDisconnect();
-  const location = useLocation();
-  const pathName = location.pathname.replace("/", "");
+  const { disconnect } = useDisconnect();
 
-  const onDisconnect = async () => {
-    await disconnectAsync();
+  const handleDisconnect = () => {
+    disconnect();
   };
 
+  useEffect(() => {
+    props.setConnected(isConnected);
+    if (!isConnected) {
+      router.push("/");
+    }
+  }, [isConnected]);
+
+  const formatPath = (path: string) => {
+    if (path === "ai-explorer/text") {
+      return "AI Explorer/Text";
+    } else {
+      return path
+        .split("/")
+        .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
+        .join("/");
+    }
+  };
+
+  useEffect(() => {
+    if (!pathname) return;
+    setCurPath(formatPath(pathname.slice(1)));
+  }, [pathname]);
+
   return (
-    <Flex as="header" align="center" justify="space-between" paddingX="6">
-      <Box display="flex" justifyContent="center" alignItems="center" gap={2}>
-        <IconButton
-          width="40px"
-          height="40px"
-          _focus={{ outline: "none" }}
-          _hover={{ bg: "#EDF2F7" }}
-          border="none"
-          bg="transparent"
-          onClick={() => setShowFlag(!showFlag)}
-        >
-          <MenuIcon color={showFlag ? "#000000" : "#1c4eff"} />
-        </IconButton>
-        <Text fontSize="xs" color="#1c1c1c80">
-          {pathName}
-        </Text>
-      </Box>
-      <MenuRoot>
-        <MenuTrigger asChild _focus={{ outline: "none" }}>
-          <Button variant="outline" size="sm">
-            {address ? shortenAddress(address, 5) : "U"}
-          </Button>
-        </MenuTrigger>
-        <MenuContent>
-          <MenuItem value="disconnect" onClick={() => onDisconnect()}>
-            Disconnect
-          </MenuItem>
-        </MenuContent>
-      </MenuRoot>
-    </Flex>
+    <header className="sticky top-0 z-999 flex w-full border-b border-stroke bg-white dark:border-stroke-dark dark:bg-gray-dark">
+      {isConnected && (
+        <div className="flex flex-grow items-center justify-between px-4 py-5 shadow-2 md:px-5 2xl:px-10">
+          <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
+            {/* Hamburger Toggle BTN */}
+            <button
+              aria-controls="sidebar"
+              onClick={(e) => {
+                e.stopPropagation();
+                props.setSidebarOpen(!props.sidebarOpen);
+              }}
+              className="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-dark-3 dark:bg-dark-2 lg:hidden"
+            >
+              {/* Your Hamburger Icon Logic */}
+            </button>
+
+            <Link className="block flex-shrink-0 lg:hidden" href="/">
+              <Image
+                width={32}
+                height={32}
+                src={"/images/logo/logo-icon.svg"}
+                alt="Logo"
+              />
+            </Link>
+          </div>
+
+          <div className="hidden xl:block">
+            <div>
+              <h1 className="text-heading-7 flex font-bold text-dark dark:text-white">
+                <button>
+                  <Image
+                    className="mx-1 my-2"
+                    src={"/images/header_logo.png"}
+                    alt="Logo"
+                    width={20}
+                    height={15}
+                  />
+                </button>
+                <div className="m-2">{curPath}</div>
+              </h1>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-normal gap-2 2xsm:gap-4 lg:w-full lg:justify-between xl:w-auto xl:justify-normal">
+            <ul className="flex items-center gap-2 2xsm:gap-4">
+              {/* Dark Mode Toggle */}
+              <DarkModeSwitcher />
+            </ul>
+
+            {/* User Area */}
+            <DropdownUser
+              address={address?.toString() || ""}
+              onDisconnect={handleDisconnect}
+            />
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
+
 export default Header;
