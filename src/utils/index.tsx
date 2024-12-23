@@ -18,16 +18,16 @@ export const InstanceIcon = ({ color }: any) => {
         <path
           d="M6.08973 9.43296L13.9999 4.86603L21.9101 9.43296V18.5668L13.9999 23.1338L6.08973 18.5668V9.43296Z"
           stroke={color}
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
           data-sentry-element="path"
           data-sentry-source-file="Instances.tsx"
         ></path>
         <path
           d="M11.2858 12.433L13.9998 10.866L16.7139 12.433V15.5669L13.9998 17.1339L11.2858 15.5669V12.433Z"
           stroke={color}
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
           data-sentry-element="path"
           data-sentry-source-file="Instances.tsx"
         ></path>
@@ -52,22 +52,22 @@ export const ClusterIcon = ({ color }: any) => {
         <path
           d="M10.42 7.76602L14.0001 5.69903L17.5802 7.76602V11.9L14.0001 13.967L10.42 11.9V7.76602Z"
           stroke={color}
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
           data-sentry-element="path"
         ></path>
         <path
           d="M5.41987 16.099L9 14.032L12.5801 16.099V20.233L9 22.3L5.41987 20.233V16.099Z"
           stroke={color}
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
           data-sentry-element="path"
         ></path>
         <path
           d="M15.4199 16.099L19 14.032L22.5801 16.099V20.233L19 22.3L15.4199 20.233V16.099Z"
           stroke={color}
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
           data-sentry-element="path"
         ></path>
       </svg>
@@ -131,22 +131,22 @@ export const ModelsIcon = ({ color }: any) => {
         <path
           d="M14 5.25V13.5834L21.9167 18.5834L21.5 9.41668L14 5.25Z"
           fill="#1C1C1C"
-          fill-opacity="0.1"
+          fillOpacity="0.1"
           data-sentry-element="path"
           data-sentry-source-file="Model.tsx"
         ></path>
         <path
           d="M13.875 4.93819C13.9524 4.89354 14.0477 4.89354 14.125 4.93819L21.7853 9.36086C21.8627 9.40551 21.9103 9.48805 21.9103 9.57736V18.4227C21.9103 18.512 21.8627 18.5945 21.7853 18.6392L14.125 23.0619C14.0477 23.1065 13.9524 23.1065 13.875 23.0619L6.21475 18.6392C6.1374 18.5945 6.08975 18.512 6.08975 18.4227V9.57736C6.08975 9.48805 6.1374 9.40551 6.21475 9.36086L13.875 4.93819Z"
           stroke={color}
-          stroke-width="1.5"
+          strokeWidth="1.5"
           data-sentry-element="path"
           data-sentry-source-file="Model.tsx"
         ></path>
         <path
           d="M14.0001 9.41699V14.0003M14.0001 14.0003L9.41675 16.5003M14.0001 14.0003L18.5834 16.5003"
           stroke={color}
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
           data-sentry-element="path"
           data-sentry-source-file="Model.tsx"
         ></path>
@@ -156,7 +156,7 @@ export const ModelsIcon = ({ color }: any) => {
           width="7014"
           height="1398"
           stroke="#1C1C1C"
-          stroke-dasharray="14 14"
+          strokeDasharray="14 14"
           data-sentry-element="rect"
           data-sentry-source-file="Model.tsx"
         ></rect>
@@ -208,7 +208,7 @@ export const SettingsIcon = ({ color }: any) => {
           cy="13.6498"
           r="3.85"
           fill={color}
-          fill-opacity="0.1"
+          fillOpacity="0.1"
           data-sentry-element="circle"
         ></circle>
         <mask
@@ -224,7 +224,7 @@ export const SettingsIcon = ({ color }: any) => {
         <path
           d="M22.3347 12.7516C22.2661 12.3609 21.8989 11.9631 21.5181 11.875L21.2334 11.8082C20.5644 11.6004 19.9709 11.1463 19.5935 10.4774C19.2162 9.80499 19.1269 9.04101 19.2916 8.34052L19.3808 8.06589C19.494 7.68568 19.3465 7.16116 19.0481 6.9006C19.0481 6.9006 18.7804 6.66826 18.0257 6.22116C17.2709 5.77758 16.945 5.65437 16.945 5.65437C16.5779 5.5171 16.0633 5.64735 15.7957 5.93955L15.5967 6.15782C15.0889 6.65069 14.4062 6.94992 13.6515 6.94992C12.8968 6.94992 12.2072 6.64721 11.6994 6.15079L11.5073 5.93953C11.2431 5.64735 10.7251 5.51714 10.358 5.65437C10.358 5.65437 10.0286 5.77758 9.27388 6.22113C8.5191 6.67176 8.25496 6.9041 8.25496 6.9041C7.95652 7.16111 7.80898 7.68213 7.9222 8.06586L8.0046 8.34397C8.16583 9.04451 8.08004 9.80499 7.70265 10.4773C7.32527 11.1497 6.72507 11.6075 6.05272 11.8117L5.77827 11.875C5.40089 11.9631 5.03034 12.3574 4.96175 12.7516C4.96175 12.7516 4.90002 13.1037 4.90002 13.9979C4.90002 14.8921 4.96175 15.2441 4.96175 15.2441C5.03034 15.6384 5.39745 16.0327 5.77827 16.1207L6.0459 16.184C6.71829 16.3883 7.32209 16.8459 7.69948 17.5218C8.07686 18.1943 8.16611 18.9582 8.00143 19.6587L7.92255 19.9298C7.80936 20.31 7.9569 20.8346 8.25529 21.0951C8.25529 21.0951 8.52292 21.3274 9.27767 21.7746C10.0324 22.2217 10.3583 22.3413 10.3583 22.3413C10.7254 22.4786 11.24 22.3484 11.5076 22.0562L11.6963 21.8484C12.2074 21.352 12.8936 21.0493 13.6518 21.0493C14.41 21.0493 15.0995 21.3555 15.6073 21.8519L15.796 22.0597C16.0602 22.3518 16.5781 22.4822 16.9453 22.3448C16.9453 22.3448 17.2746 22.2216 18.0294 21.7781C18.7841 21.3309 19.0483 21.0986 19.0483 21.0986C19.3467 20.8416 19.4943 20.3171 19.381 19.9333L19.2986 19.6517C19.1374 18.9547 19.2232 18.1942 19.6006 17.5253C19.978 16.8529 20.5817 16.3917 21.2542 16.1875L21.5218 16.1242C21.8992 16.0361 22.2697 15.6419 22.3383 15.2476C22.3383 15.2476 22.4 14.8956 22.4 14.0013C22.3964 13.1036 22.3347 12.7515 22.3347 12.7515L22.3347 12.7516ZM13.6517 17.5782C11.7271 17.5782 10.1627 15.9764 10.1627 13.9979C10.1627 12.0229 11.7237 10.4211 13.6517 10.4211C15.5763 10.4211 17.1407 12.0228 17.1407 14.0014C17.1372 15.9764 15.5763 17.5782 13.6517 17.5782Z"
           stroke={color}
-          stroke-width="3"
+          strokeWidth="3"
           mask="url(#path-4-inside-1_13_4979)"
           data-sentry-element="path"
         ></path>
@@ -234,7 +234,7 @@ export const SettingsIcon = ({ color }: any) => {
           width="7014"
           height="1398"
           stroke="currentColor"
-          stroke-dasharray="14 14"
+          strokeDasharray="14 14"
           data-sentry-element="rect"
         ></rect>
       </svg>
@@ -247,8 +247,9 @@ export const AiExplorerIcon = ({ color }: { color?: string }) => {
       <svg
         viewBox="0 0 28 28"
         focusable="false"
-        className="chakra-icon chakra-icon css-1r5s2qr"
+        className="chakra-icon chakra-icon css-ct77ok"
         data-sentry-element="Icon"
+        data-sentry-source-file="AiExplorer.tsx"
         data-sentry-component="AiExplorerIcon"
       >
         <rect
@@ -256,6 +257,7 @@ export const AiExplorerIcon = ({ color }: { color?: string }) => {
           height="28"
           fill="transparent"
           data-sentry-element="rect"
+          data-sentry-source-file="AiExplorer.tsx"
         ></rect>
         <rect
           width="1440"
@@ -263,6 +265,7 @@ export const AiExplorerIcon = ({ color }: { color?: string }) => {
           transform="translate(-28 -338)"
           fill="transparent"
           data-sentry-element="rect"
+          data-sentry-source-file="AiExplorer.tsx"
         ></rect>
         <rect
           x="-28"
@@ -271,6 +274,7 @@ export const AiExplorerIcon = ({ color }: { color?: string }) => {
           height="1129"
           fill="transparent"
           data-sentry-element="rect"
+          data-sentry-source-file="AiExplorer.tsx"
         ></rect>
         <rect
           width="28"
@@ -278,6 +282,7 @@ export const AiExplorerIcon = ({ color }: { color?: string }) => {
           rx="8"
           fill="transparent"
           data-sentry-element="rect"
+          data-sentry-source-file="AiExplorer.tsx"
         ></rect>
         <rect
           width="28"
@@ -285,6 +290,7 @@ export const AiExplorerIcon = ({ color }: { color?: string }) => {
           rx="8"
           fill="transparent"
           data-sentry-element="rect"
+          data-sentry-source-file="AiExplorer.tsx"
         ></rect>
         <rect
           x="4"
@@ -293,39 +299,45 @@ export const AiExplorerIcon = ({ color }: { color?: string }) => {
           height="20"
           fill="transparent"
           data-sentry-element="rect"
+          data-sentry-source-file="AiExplorer.tsx"
         ></rect>
         <path
           d="M22.6603 11.5V9.57736C22.6603 9.2201 22.4697 8.88997 22.1603 8.71134L14.5 4.28868C14.1906 4.11004 13.8094 4.11004 13.5 4.28868L5.83972 8.71134C5.53032 8.88997 5.33972 9.2201 5.33972 9.57736V11.5M22.6603 16.5V18.4227C22.6603 18.78 22.4697 19.1101 22.1603 19.2887L14.5 23.7114C14.1906 23.89 13.8094 23.89 13.5 23.7114L5.83972 19.2887C5.53032 19.1101 5.33972 18.78 5.33972 18.4227V16.5"
           stroke={color}
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
           data-sentry-element="path"
+          data-sentry-source-file="AiExplorer.tsx"
         ></path>
         <circle
           cx="5.5"
           cy="13.5"
           r="1.75"
           stroke={color}
-          stroke-width="1.5"
+          strokeWidth="1.5"
           data-sentry-element="circle"
+          data-sentry-source-file="AiExplorer.tsx"
         ></circle>
         <circle
           cx="22.5"
           cy="13.5"
           r="1.75"
           stroke={color}
-          stroke-width="1.5"
+          strokeWidth="1.5"
           data-sentry-element="circle"
+          data-sentry-source-file="AiExplorer.tsx"
         ></circle>
         <path
           d="M10.4022 17H9L11.553 10H13.1747L15.7312 17H14.329L12.3922 11.4355H12.3355L10.4022 17ZM10.4482 14.2554H14.2724V15.2739H10.4482V14.2554Z"
-          fill={color}
+          stroke={color}
           data-sentry-element="path"
+          data-sentry-source-file="AiExplorer.tsx"
         ></path>
         <path
           d="M18 10V17H16.6863V10H18Z"
-          fill={color}
+          stroke={color}
           data-sentry-element="path"
+          data-sentry-source-file="AiExplorer.tsx"
         ></path>
         <rect
           x="-3235.5"
@@ -333,8 +345,9 @@ export const AiExplorerIcon = ({ color }: { color?: string }) => {
           width="7014"
           height="1398"
           stroke={color}
-          stroke-dasharray="14 14"
+          strokeDasharray="14 14"
           data-sentry-element="rect"
+          data-sentry-source-file="AiExplorer.tsx"
         ></rect>
       </svg>
     </Icon>
@@ -363,8 +376,8 @@ export const InterfaceIcon = ({ color }: any) => {
         <path
           d="M16.43 6.7002C19.7163 7.75653 22.1 10.8986 22.1 14.6104C22.1 15.6268 21.9213 16.6004 21.5943 17.5002M11.57 6.7002C8.28377 7.75653 5.90002 10.8986 5.90002 14.6104C5.90002 15.6268 6.07874 16.6004 6.40576 17.5002M19.0403 21.1002C17.657 22.2269 15.9053 22.9002 14 22.9002C12.0203 22.9002 10.2064 22.1733 8.79936 20.9661"
           stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
           data-sentry-element="path"
           data-sentry-source-file="Inference.tsx"
         ></path>
@@ -373,8 +386,8 @@ export const InterfaceIcon = ({ color }: any) => {
           cy="6.7"
           r="1.95"
           stroke={color}
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
           data-sentry-element="circle"
           data-sentry-source-file="Inference.tsx"
         ></circle>
@@ -383,8 +396,8 @@ export const InterfaceIcon = ({ color }: any) => {
           cy="19.2996"
           r="1.95"
           stroke={color}
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
           data-sentry-element="circle"
           data-sentry-source-file="Inference.tsx"
         ></circle>
@@ -393,8 +406,8 @@ export const InterfaceIcon = ({ color }: any) => {
           cy="19.2996"
           r="1.95"
           stroke={color}
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
           data-sentry-element="circle"
           data-sentry-source-file="Inference.tsx"
         ></circle>
@@ -448,7 +461,7 @@ export const BillingIcon = ({ color }: any) => {
       <path
         d="M10.7 4.3999L22.25 4.7499V18.7499H19.45L19.1 7.1999H10L10.7 4.3999Z"
         fill={color}
-        fill-opacity="0.1"
+        fillOpacity="0.1"
         data-sentry-element="path"
         data-sentry-source-file="Billing.tsx"
       ></path>
@@ -459,7 +472,7 @@ export const BillingIcon = ({ color }: any) => {
         height="16.5"
         rx="2.25"
         stroke={color}
-        stroke-width="1.5"
+        strokeWidth="1.5"
         data-sentry-element="rect"
         data-sentry-source-file="Billing.tsx"
       ></rect>
@@ -472,7 +485,7 @@ export const BillingIcon = ({ color }: any) => {
       <path
         d="M10.1 7.00682V6C10.1 4.89543 10.9954 4 12.1 4H20.7C21.8045 4 22.7 4.89543 22.7 6V16.7C22.7 17.8046 21.8045 18.7 20.7 18.7H19.55"
         stroke={color}
-        stroke-width="1.5"
+        strokeWidth="1.5"
         data-sentry-element="path"
         data-sentry-source-file="Billing.tsx"
       ></path>
@@ -482,7 +495,7 @@ export const BillingIcon = ({ color }: any) => {
         width="16202"
         height="1398"
         stroke={color}
-        stroke-dasharray="14 14"
+        strokeDasharray="14 14"
         data-sentry-element="rect"
         data-sentry-source-file="Billing.tsx"
       ></rect>
@@ -543,7 +556,7 @@ export const LogoIcon = () => {
         data-sentry-source-file="LogoFull.tsx"
       >
         <g
-          clip-path="url(#clip0_4_8941)"
+          clipPath="url(#clip0_4_8941)"
           data-sentry-element="g"
           data-sentry-source-file="LogoFull.tsx"
         >

@@ -4,14 +4,27 @@ import { IconButton } from "@chakra-ui/react";
 import { MenuIcon } from "../../utils";
 import { Button } from "../ui/button";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../ui/menu";
+import { useAccount, useDisconnect } from "wagmi";
 
 interface HeaderProps {
   showFlag: boolean;
   setShowFlag: any;
 }
+
+const shortenAddress = (address: string, chars: number) => {
+  if (address) return `${address.slice(0, chars)}...${address.slice(-chars)}`;
+};
+
 const Header = ({ showFlag, setShowFlag }: HeaderProps) => {
+  const { address } = useAccount();
+  const { disconnectAsync } = useDisconnect();
   const location = useLocation();
   const pathName = location.pathname.replace("/", "");
+
+  const onDisconnect = async () => {
+    await disconnectAsync();
+  };
+
   return (
     <Flex as="header" align="center" justify="space-between" paddingX="6">
       <Box display="flex" justifyContent="center" alignItems="center" gap={2}>
@@ -33,12 +46,13 @@ const Header = ({ showFlag, setShowFlag }: HeaderProps) => {
       <MenuRoot>
         <MenuTrigger asChild _focus={{ outline: "none" }}>
           <Button variant="outline" size="sm">
-            Open
+            {address ? shortenAddress(address, 5) : "U"}
           </Button>
         </MenuTrigger>
         <MenuContent>
-          <MenuItem value="new-txt">New Text File</MenuItem>
-          <MenuItem value="new-file">Sign Out</MenuItem>
+          <MenuItem value="disconnect" onClick={() => onDisconnect()}>
+            Disconnect
+          </MenuItem>
         </MenuContent>
       </MenuRoot>
     </Flex>

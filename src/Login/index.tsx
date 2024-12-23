@@ -1,20 +1,38 @@
-import {
-  Box,
-  Button,
-  Input,
-  Image,
-  Text,
-  Link,
-  Stack,
-  Fieldset,
-} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { useAccount } from "wagmi";
+import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { Box, Image, Text, Stack } from "@chakra-ui/react";
+import MetamaskSvg from "../components/common/MetamaskSvg";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Login = () => {
+  const { address } = useAccount();
+  const { open } = useWeb3Modal();
   const navigate = useNavigate();
-  const handleSubmit = () => {
-    navigate("/instances");
+
+  useEffect(() => {
+    const connectWallet = async () => {
+      try {
+        await axios.post(
+          "https://intelliphy-api.onrender.com/api/users/register",
+          { address }
+        );
+      } catch (error) {
+        console.error({ error });
+      }
+    };
+
+    if (address) {
+      connectWallet();
+      navigate("/instances");
+    }
+  }, [address]);
+
+  const onConnect = () => {
+    open?.();
   };
+
   return (
     <Box
       bg="black"
@@ -40,54 +58,21 @@ const Login = () => {
         bg="white"
       >
         <Image src="./assets/logo.png" width="50px" height="50px" />
-        <Stack textAlign="center" mt={4}>
-          <Text fontSize="lg">Welcome</Text>
-          <Text fontSize="xs">Log in to continue to Yotta Platform.</Text>
+        <Stack textAlign="center" mt={6}>
+          <Text fontSize="xl">Welcome</Text>
+          <Text fontSize="md">Log in to continue to Yotta Platform.</Text>
         </Stack>
-        <Fieldset.Root size="lg" maxW="lg" onSubmit={() => handleSubmit()}>
-          <Input type="email" placeholder="Email address" mt="4" />
-          <Input type="password" placeholder="Password" mt="2" />
-          <Link
-            color="blue.500"
-            mt={3}
-            display="block"
-            textAlign="left"
-            fontSize="xs"
+        <div className="mt-6 flex flex-col items-center w-full gap-3">
+          <button
+            className="rounded-lg border border-[#F7FF98] flex items-center justify-center gap-2 w-full py-[10px] bg-[#F7FF98] hover:bg-[#262626] hover:text-white group transition-all duration-300 ease-in-out"
+            onClick={onConnect}
           >
-            Forgot password?
-          </Link>
-          <Button
-            colorScheme="blue"
-            width="full"
-            mt={4}
-            bg="#1C4EFF"
-            fontSize="small"
-            borderRadius="0"
-            onClick={() => handleSubmit()}
-          >
-            Continue
-          </Button>
-        </Fieldset.Root>
-        <Text mt={4} fontSize="xs" textAlign="left" width="full">
-          Don’t have an account?{" "}
-          <Link color="blue.500" href="/signup">
-            {" "}
-            Sign up
-          </Link>
-        </Text>
-        <Text textAlign="center" mt={4} fontSize="11px">
-          OR
-        </Text>
-        <Button
-          variant="outline"
-          colorScheme="blue"
-          width="full"
-          mt={2}
-          fontSize={"sm"}
-          fontStyle="normal"
-        >
-          Continue with Metamask
-        </Button>
+            <MetamaskSvg />
+            <div className="SpaceMono text-[#1C1C1C] leading-7 text-[16px] sm:text-[16px] font-bold group-hover:text-[#F7FF98] transition-all duration-300 ease-in-out">
+              Connect Wallet
+            </div>
+          </button>
+        </div>
       </Box>
     </Box>
   );

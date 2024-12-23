@@ -1,14 +1,10 @@
 import { Box, VStack, Text, Link as ChakraLink } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import {
-  AiExplorerIcon,
-  BillingIcon,
   ClusterIcon,
   InstanceIcon,
   InterfaceIcon,
-  LogoIcon,
   ModelsIcon,
-  SettingsIcon,
 } from "../../utils";
 import {
   AccordionItem,
@@ -16,6 +12,9 @@ import {
   AccordionItemTrigger,
   AccordionRoot,
 } from "../ui/accordion";
+import { PiBrainThin } from "react-icons/pi";
+import { TbPigMoney } from "react-icons/tb";
+import { IoSettingsOutline } from "react-icons/io5";
 
 interface NavbarProps {
   showFlag: boolean;
@@ -34,8 +33,9 @@ export const Navbar = ({ showFlag }: NavbarProps) => {
       flexDirection="column"
       overflowY="auto"
     >
-      <LogoIcon />
-      <VStack align="start" gap={4} mt={5}>
+      {/* <LogoIcon /> */}
+      <div className="text-xl font-semibold mt-5">Intelliphy Labs</div>
+      <VStack align="start" gap={4} mt={16}>
         <ChakraLink
           href="/instances"
           style={{ width: "100%" }}
@@ -161,7 +161,7 @@ export const Navbar = ({ showFlag }: NavbarProps) => {
                 />
               </Box>
               <Text textAlign="center" fontSize="sm">
-                Market
+                Model
               </Text>
             </AccordionItemTrigger>
             <AccordionItemContent border="none">
@@ -174,6 +174,7 @@ export const Navbar = ({ showFlag }: NavbarProps) => {
                     ? "#1C4EFF"
                     : "black"
                 }
+                style={{ borderLeft: "1px dashed #c0c0c0", paddingLeft: 26 }}
               >
                 <Text textAlign="center" fontSize="sm">
                   Marketplace
@@ -214,11 +215,12 @@ export const Navbar = ({ showFlag }: NavbarProps) => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <AiExplorerIcon
+                <PiBrainThin />
+                {/* <AiExplorerIcon
                   color={
                     location.pathname === "/aiexplorer" ? "#FFFFFF" : "black"
                   }
-                />
+                /> */}
               </Box>
               <Text textAlign="center" fontSize="sm">
                 AI Explorer
@@ -232,9 +234,10 @@ export const Navbar = ({ showFlag }: NavbarProps) => {
                 color={
                   location.pathname === "/aiexplorer/text" ? "#1C4EFF" : "black"
                 }
+                style={{ borderLeft: "1px dashed #c0c0c0", paddingLeft: 26 }}
               >
-                <Text textAlign="center" fontSize="sm">
-                  Text
+                <Text textAlign="start" fontSize="sm">
+                  Text {" "}
                 </Text>
               </ChakraLink>
             </AccordionItemContent>
@@ -248,8 +251,9 @@ export const Navbar = ({ showFlag }: NavbarProps) => {
                     ? "#1C4EFF"
                     : "black"
                 }
+                style={{ borderLeft: "1px dashed #c0c0c0", paddingLeft: 26 }}
               >
-                <Text textAlign="center" fontSize="sm">
+                <Text textAlign="start" fontSize="sm">
                   Image
                 </Text>
               </ChakraLink>
@@ -264,8 +268,9 @@ export const Navbar = ({ showFlag }: NavbarProps) => {
                     ? "#1C4EFF"
                     : "black"
                 }
+                style={{ borderLeft: "1px dashed #c0c0c0", paddingLeft: 26 }}
               >
-                <Text textAlign="center" fontSize="sm">
+                <Text textAlign="start" fontSize="sm">
                   Audio
                 </Text>
               </ChakraLink>
@@ -337,9 +342,10 @@ export const Navbar = ({ showFlag }: NavbarProps) => {
               justifyContent="center"
               alignItems="center"
             >
-              <BillingIcon
+              <TbPigMoney />
+              {/* <BillingIcon
                 color={location.pathname === "/billing" ? "#FFFFFF" : "black"}
-              />
+              /> */}
             </Box>
             <Text textAlign="center" fontSize="sm">
               Billing
@@ -378,11 +384,12 @@ export const Navbar = ({ showFlag }: NavbarProps) => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <SettingsIcon
-                // color={
-                //   location.pathname === "/settings" ? "#FFFFFF" : "black"
-                // }
-                />
+                {/* <SettingsIcon
+                color={
+                  location.pathname === "/settings" ? "#FFFFFF" : "black"
+                }
+                /> */}
+                <IoSettingsOutline />
               </Box>
               <Text textAlign="center" fontSize="sm">
                 Settings
