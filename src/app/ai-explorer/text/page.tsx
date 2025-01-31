@@ -145,7 +145,7 @@ const AIExplorerTextPage = () => {
               height={20}
               src={"/images/logo/LogoGray.png"}
               alt="Logo"
-              className="m-4"
+              className="my-5 mx-2"
             />            
           <div className="my-5 flex flex-col dark:text-white">
             <p className="text-large font-bold">
@@ -161,12 +161,12 @@ const AIExplorerTextPage = () => {
           <div className="flex items-start p-1">
             <Image
               className="mx-1 my-2"
-              src={"/images/ai-explorer/icon-mistral.png"}
+              src={"/images/ai-explorer/logo-small.png"}
               alt="Logo"
-              width={20}
-              height={15}
+              width={25}
+              height={20}
             />
-            <div className="bg-gray p-2 text-sm font-bold">
+            <div className="bg-gray dark:bg-[#122031] py-2 text-sm font-bold">
               what can i help you?
             </div>
           </div>
