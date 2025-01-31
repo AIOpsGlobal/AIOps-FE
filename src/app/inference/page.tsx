@@ -26,17 +26,27 @@ const AIExplorerTextPage = () => {
     <>
       <div className="mx-auto max-w-7xl">
         <div
-          className="justify-content-center flex flex-col items-center text-center"
-          style={{ transform: "translate(0px, 110%)" }}
+          className="justify-content-center flex flex-col items-center gap-3 text-center"
+          style={{ transform: "translate(0px, 90%)" }}
         >
-          <Image
-            width={176}
-            height={32}
-            src={"/images/icon_logo2.svg"}
-            alt="Logo"
-            className="dark:hidden"
-            style={{ width: "auto", height: "auto" }}
-          />
+          <div className="h-[70px] w-[70px]">
+            <Image
+              width={80}
+              height={80}
+              src={"/images/logo/LogoGray.png"}
+              alt="Logo"
+              className="dark:hidden"
+              style={{ width: "auto", height: "auto" }}
+            />
+            <Image
+              width={80}
+              height={80}
+              src={"/images/logo/LogoforDark.png"}
+              alt="Logo"
+              className="hidden dark:block"
+              style={{ width: "auto", height: "auto" }}
+            />
+          </div>
           <p className="text-bold max-w-3xl text-base">
             {
               "We're currently testing our latest features, and we'd love for you to join us. If you're interested in Inference, sign up for the waitlist, and you'll be among the first to get access. We'll keep you updated and reach out as soon as it's available. Thanks for your support!"
@@ -44,7 +54,7 @@ const AIExplorerTextPage = () => {
           </p>
 
           <button
-            className="mt-2 rounded-[5px] bg-primary px-10 py-3.5 text-white lg:px-8 xl:px-10"
+            className="mt-2 rounded-[5px] bg-[#0000FE] px-10 py-2 text-white lg:px-8 xl:px-10"
             onClick={() => {
               setShowModal(true);
             }}

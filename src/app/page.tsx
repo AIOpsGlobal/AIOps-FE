@@ -7,22 +7,24 @@ import React from "react";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Yotta Platform",
-  description: "YottaLib",
+  title: "Intelliphy AI",
+  description: "Intelliphy",
 };
 
 export default function Home() {
   return (
-    <div className="flex h-screen w-full items-center justify-center">
-      <div className="mx-auto flex h-100 w-100 flex-col items-center justify-between rounded-[10px] bg-white py-20 text-center shadow-3">
-        <Image
-          className="m-4"
-          src="/images/ai-explorer/icon-meta.png"
-          alt="Logo"
-          width={50}
-          height={32}
+    <div className="absolute flex h-screen w-full items-center justify-center bg-[#bbc4d5] left-0 top-0 ">
+      <div className="flex h-full w-full relative items-center justify-center">
+        <Image 
+          src={"/images/splash.png"}
+          alt="Logo Icon" 
+          width={1200}
+          height={800}
+          style={{width: '100%', height:'100%'}}    
         />
-        <Index />
+        <div className="absolute left-1/2 top-1/2 mx-auto flex h-80 w-80 flex-col items-center justify-between rounded-[10px] bg-white py-10 text-center shadow-3  transform -translate-x-1/2 -translate-y-1/2">
+          <Index />
+        </div>
       </div>
     </div>
   );

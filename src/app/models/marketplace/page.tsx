@@ -44,7 +44,7 @@ const MarketplacePage = () => {
               <ButtonSmall
                 label="All"
                 link="#"
-                customClasses="bg-primary text-white rounded-[5px] px-10 py-3.5 lg:px-8 xl:px-10 mr-5 my-3"
+                customClasses="bg-[#0000FE] text-white rounded-[5px] px-10 py-3.5 lg:px-8 xl:px-10 mr-5 my-3"
               />
               <ButtonSmall
                 label="Text"
@@ -56,7 +56,7 @@ const MarketplacePage = () => {
               <ButtonSmall
                 label="All"
                 link="#"
-                customClasses="bg-primary text-dark dark:text-white rounded-[5px] px-10 py-3.5 lg:px-8 xl:px-10 dark:bg-gray-500 mx-1 sm:mx-2 my-3"
+                customClasses="bg-[#0000FE] text-white dark:text-dark rounded-[5px] px-10 py-3.5 lg:px-8 xl:px-10 dark:bg-gray-500 mx-1 sm:mx-2 my-3"
               />
               <ButtonSmall
                 label="Meta"

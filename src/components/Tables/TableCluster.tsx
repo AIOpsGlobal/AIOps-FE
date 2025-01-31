@@ -23,12 +23,12 @@ const TableCluster = () => {
 
   return (
     <div className="dark:bg-gray-dark">
-      <div className="flex justify-between px-4 py-6 md:px-6 xl:px-9">
+      <div className="flex justify-between items-center px-4 py-6 md:px-6 xl:px-9">
         <h4 className="text-body-2xlg font-bold text-dark dark:text-white">
           Cluster
         </h4>
         <button
-          className="mt-2 rounded-[5px] bg-primary px-10 py-3.5 text-white lg:px-8 xl:px-10"
+          className="rounded-[5px] bg-[#0000FE] px-10 py-2 text-white lg:px-8 xl:px-10"
           onClick={() => {
             setShowModal(1);
           }}
@@ -39,22 +39,22 @@ const TableCluster = () => {
       <div className="grid grid-cols-7 border-t border-stroke px-4 py-4.5 dark:border-dark-3 sm:grid-cols-8 md:px-6 2xl:px-7.5">
         <div className="col-span-2 flex items-center">
           <Checkbox />
-          <p className="text-xs sm:text-xl">Name</p>
+          <p className="text-sm md:text-md">Name</p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="text-xs sm:text-xl">Region</p>
+          <p className="text-sm md:text-md">Region</p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="text-xs sm:text-xl">Nodes</p>
+          <p className="text-sm md:text-md">Nodes</p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="text-xs sm:text-xl">CPUs</p>
+          <p className="text-sm md:text-md">CPUs</p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="text-xs sm:text-xl">Status</p>
+          <p className="text-sm md:text-md">Status</p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="text-xs sm:text-xl">Cloud IDE</p>
+          <p className="text-sm md:text-md">Cloud IDE</p>
         </div>
       </div>
 

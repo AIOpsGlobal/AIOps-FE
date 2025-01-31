@@ -17,7 +17,7 @@ const ButtonSmall = ({
   return (
     <>
       <Link
-        className={`inline-flex items-center justify-center gap-2.5 text-center font-small hover:bg-opacity-90 ${customClasses}`}
+        className={`inline-flex items-center justify-center gap-2.5 text-center font-small hover:bg-opacity-90 text-[14px] ${customClasses}`}
         style={{ padding: '4px', paddingLeft: '20px', paddingRight: '20px' }}
         href={link}
       >

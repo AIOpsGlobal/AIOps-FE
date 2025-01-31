@@ -3,8 +3,8 @@ import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import SettingBoxes from "@/components/SettingBoxes";
 
 export const metadata: Metadata = {
-  title: "YottaLib",
-  description: "YottaLib",
+  title: "Intelliphy AI",
+  description: "Intelliphy",
 };
 
 const Settings = () => {

@@ -28,7 +28,7 @@ const SettingBoxes = () => {
     <>
       <div className="max-w-8xl rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
         <div className="border-b border-stroke px-7 py-4 dark:border-dark-3">
-          <h3 className="text-xl font-bold text-dark dark:text-white">
+          <h3 className="text-body-2xlg font-bold text-dark dark:text-white">
             Organization settings
           </h3>
         </div>

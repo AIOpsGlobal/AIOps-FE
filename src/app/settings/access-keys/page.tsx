@@ -8,7 +8,7 @@ const SettingsAccessKeysPage = () => {
           API Keys
         </h3>
         <h3 className="text-medium my-2 text-dark dark:text-white">
-          API Keys allow users to interact with Yotta Cloud through an HTTP API.
+          API Keys allow users to interact with Intelliphy Cloud through an HTTP API.
           Learn more about API keys in our docs page.
         </h3>
         <APIKeyField />

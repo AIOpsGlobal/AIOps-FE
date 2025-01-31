@@ -550,32 +550,30 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>
       <aside
-        className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden border-r border-stroke bg-white dark:border-stroke-dark dark:bg-gray-dark lg:static lg:translate-x-0 ${
+        className={`absolute left-0 top-0 z-9999 flex h-screen w-70 flex-col overflow-y-hidden border-r border-stroke bg-white dark:border-stroke-dark dark:bg-gray-dark lg:static lg:translate-x-0 ${
           sidebarOpen
             ? "translate-x-0 duration-300 ease-linear"
             : "-translate-x-full"
         }`}
       >
         {/* <!-- SIDEBAR HEADER --> */}
-        <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5 xl:py-10">
-          <Link href="/">
+        <div className="flex w-full items-center justify-between gap-2 px-6 py-4 lg:py-5 xl:py-6">
+          <Link className="w-full" href="/">
             <Image
-              width={176}
-              height={32}
-              src={"/images/logo/logo-dark.svg"}
+              width={200}
+              height={30}
+              src={"/images/logo.png"}
               alt="Logo"
               priority
-              className="dark:hidden"
-              style={{ width: "auto", height: "auto" }}
+              className="dark:hidden"             
             />
             <Image
-              width={176}
-              height={32}
-              src={"/images/logo/logo-dark.svg"}
+              width={200}
+              height={30}
+              src={"/images/logo.png"}
               alt="Logo"
               priority
-              className="hidden dark:block"
-              style={{ width: "auto", height: "auto" }}
+              className="hidden dark:block"             
             />
           </Link>
 

@@ -26,6 +26,8 @@ export const AppProvider = ({ children }: IAppProviderProps) => {
         (async () => {
           const _ = await getCurrentUser();
           setUser(_);
+
+          router.push("/instances");
         })();
       } else {
         // Auth Again
@@ -33,6 +35,8 @@ export const AppProvider = ({ children }: IAppProviderProps) => {
           await auth(address);
           const _ = await getCurrentUser();
           setUser(_);
+
+          router.push("/instances");
         })();
       }
     }

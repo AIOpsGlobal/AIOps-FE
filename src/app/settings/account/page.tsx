@@ -41,7 +41,7 @@ const SettingsAccountPage = () => {
       "
     >
       <div className="flex flex-col">
-        <h3 className="my-5 text-xl font-bold text-dark dark:text-white">
+        <h3 className="my-5 text-body-2xlg font-bold text-dark dark:text-white">
           Account setting
         </h3>
 
@@ -116,7 +116,7 @@ const SettingsAccountPage = () => {
           </div>
 
           <div
-            className={`mx-2 mt-12 inline-flex h-10 cursor-pointer items-center justify-center gap-2.5 rounded-[5px] bg-primary px-10 py-3.5 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10`}
+            className={`flex mx-2 mt-12 h-fit cursor-pointer items-center justify-center rounded-[5px] bg-[#0000FE] px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10`}
             onClick={handleUpdateProfile}
           >
             Save

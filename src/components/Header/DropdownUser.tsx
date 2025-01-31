@@ -18,7 +18,7 @@ const DropdownUser = ({address, onDisconnect} : {address: string, onDisconnect: 
         href="#"
       >
         <span className="flex items-center gap-2 font-medium text-dark dark:text-dark-6">
-          <span className="hidden lg:block">{address.slice(0, 7)}...{address.slice(address.length - 7, address.length - 1)}</span>
+          <span className="hidden lg:block text-[15px]">{address.slice(0, 7)}...{address.slice(address.length - 7, address.length - 1)}</span>
 
           <svg
             className={`fill-current duration-200 ease-in ${dropdownOpen && "rotate-180"}`}
@@ -41,7 +41,7 @@ const DropdownUser = ({address, onDisconnect} : {address: string, onDisconnect: 
       {/* <!-- Dropdown Star --> */}
       {dropdownOpen && (
         <div
-          className={`absolute right-0 mt-7.5 flex w-[280px] flex-col rounded-lg border-[0.5px] border-stroke bg-white shadow-default dark:border-dark-3 dark:bg-gray-dark`}
+          className={`absolute right-0 mt-6 flex w-[280px] flex-col rounded-lg border-[0.5px] border-stroke bg-white shadow-default dark:border-dark-3 dark:bg-gray-dark`}
         >
           {/* <div className="flex items-center gap-2.5 px-5 pb-5.5 pt-3.5">
             <span className="block">
@@ -53,8 +53,8 @@ const DropdownUser = ({address, onDisconnect} : {address: string, onDisconnect: 
               </span>
             </span>
           </div> */}
-          <div className="p-2.5 border-t">
-            <button className="flex w-full items-center gap-2.5 rounded-[7px] p-2.5 text-sm font-medium text-dark-4 duration-300 ease-in-out hover:bg-gray-2 hover:text-dark dark:text-dark-6 dark:hover:bg-dark-3 dark:hover:text-white lg:text-base"
+          <div className="p-1 border-t">
+            <button className="flex w-full items-center gap-2.5 rounded-[7px] p-2.5 text-[15px] font-medium text-dark-4 duration-300 ease-in-out hover:bg-gray-2 hover:text-dark dark:text-dark-6 dark:hover:bg-dark-3 dark:hover:text-white lg:text-base"
             onClick={handleDisconnect}
             >
               <svg

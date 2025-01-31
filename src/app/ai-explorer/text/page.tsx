@@ -133,13 +133,20 @@ const AIExplorerTextPage = () => {
       >
         {/* Sub title */}
         <div className="flex">
-          <Image
+          {/* <Image
             className="m-4"
             src={"/images/ai-explorer/icon-meta.png"}
             alt="Logo"
             width={50}
             height={32}
-          />
+          /> */}
+           <Image
+              width={50}
+              height={20}
+              src={"/images/logo/LogoGray.png"}
+              alt="Logo"
+              className="m-4"
+            />            
           <div className="my-5 flex flex-col dark:text-white">
             <p className="text-large font-bold">
               {selectedModel ? selectedModel[0].name : "Choose your AI Model"}
