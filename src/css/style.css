@@ -33,6 +33,10 @@
     }
 }
 
+.bord {
+    border:1px solid saddlebrown
+}
+
 /* third-party libraries CSS */
 
 .tableCheckbox:checked ~ div span {

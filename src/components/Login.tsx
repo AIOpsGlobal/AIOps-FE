@@ -11,7 +11,7 @@ import { useWeb3Modal } from "@web3modal/wagmi/react";
 import Image from "next/image";
 const queryClient = new QueryClient();
 
-const Home: NextPage = () => {
+const Login: NextPage = () => {
   const { open } = useWeb3Modal();
   const router = useRouter();
 
@@ -26,23 +26,28 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="w-[250px]">
+    <div className="w-[250px] ">
       <QueryClientProvider client={queryClient}>
         {/* <appkit-button /> */}
-        <div className="flex h-full w-full flex-col items-center justify-center space-y-5">
-          <Image 
-              src="/images/login-icon.jpg" 
-              alt="Logo Icon" 
-              width={50} // Set the desired width
-              height={50} // Set the desired height
-              className="text-black" // You can still apply classes
-            />
-          <p className="text-[26px] text-center font-bold text-[#313131]">Welcome</p>
-          <p className="text-[15px] text-center"> Connect your wallet <br/> to continue to intelliphy app</p>
+        <div className="flex h-full w-full flex-col items-center justify-center">
+          <Image
+            src="/images/login-icon.svg"
+            alt="Logo Icon"
+            width={64}
+            height={64}
+            className="text-black"
+          />
+          <p className="mt-4 text-center text-3xl   font-medium text-[#4c4c4c]">
+            Welcome
+          </p>
+          <p className="mb-8 mt-4 flex flex-col text-center text-lg font-medium leading-tight text-[#a3a3a3]">
+            <span>Connect your wallet</span>
+            <span>to continue to AiOps app</span>
+          </p>
           <button
             className="flex w-full items-center justify-center rounded-lg border border-[#F7FF98] bg-[#0100fb] py-2 transition-all duration-300 ease-in-out hover:bg-[#004cff] hover:text-white"
             onClick={onConnect}
-          >            
+          >
             <div className="SpaceMono w-full text-[16px] font-bold leading-7 text-white transition-all duration-300 ease-in-out hover:text-white sm:text-[16px]">
               Connect Wallet
             </div>
@@ -53,4 +58,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Login;

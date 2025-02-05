@@ -12,6 +12,7 @@ export const api = axios.create({
 api.interceptors.response.use(
   (res) => res,
   (err) => {
+    console.error(err);
     if (err.response.status === 401) {
       setAuthToken(null);
     }

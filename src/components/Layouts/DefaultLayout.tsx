@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, ReactNode, useEffect } from "react";
+import React, { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 
@@ -66,7 +66,7 @@ export default function DefaultLayout({
               {/* <!-- ===== Sidebar End ===== --> */}
 
               {/* <!-- ===== Content Area Star ===== --> */}
-              <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden" >
+              <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
                 {/* <!-- ===== Header Star ===== --> */}
                 <Header
                   sidebarOpen={sidebarOpen}
@@ -77,9 +77,7 @@ export default function DefaultLayout({
 
                 {/* <!-- ===== Main Content Star ===== --> */}
                 <main>
-                  <div className="mx-auto max-w-screen-2xl md:p-6 2xl:pl-5">
-                    {children}
-                  </div>
+                  <div className="">{children}</div>
                 </main>
                 {/* <!-- ===== Main Content End ===== --> */}
               </div>
