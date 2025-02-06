@@ -31,7 +31,7 @@ const Login: NextPage = () => {
         {/* <appkit-button /> */}
         <div className="flex h-full w-full flex-col items-center justify-center">
           <Image
-            src="/images/login-icon.svg"
+            src="/images/login-logo.jpg"
             alt="Logo Icon"
             width={64}
             height={64}
