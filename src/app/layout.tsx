@@ -12,7 +12,7 @@ import { Toaster } from "react-hot-toast";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AiOps",
+  title: "AIOps",
   description: "Rebranding Enterprise solutions",
 };
 

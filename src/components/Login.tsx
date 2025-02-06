@@ -42,7 +42,7 @@ const Login: NextPage = () => {
           </p>
           <p className="mb-8 mt-4 flex flex-col text-center text-lg font-medium leading-tight text-[#a3a3a3]">
             <span>Connect your wallet</span>
-            <span>to continue to AiOps app</span>
+            <span>to continue to AIOps app</span>
           </p>
           <button
             className="flex w-full items-center justify-center rounded-lg border border-[#F7FF98] bg-[#0100fb] py-2 transition-all duration-300 ease-in-out hover:bg-[#004cff] hover:text-white"

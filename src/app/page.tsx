@@ -7,7 +7,7 @@ import React from "react";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "AiOps",
+  title: "AIOps",
   description: "Rebranding Enterprise solutions",
 };
 
