@@ -7,6 +7,7 @@ import Image from "next/image";
 import SidebarItem from "@/components/Sidebar/SidebarItem";
 import ClickOutside from "@/components/ClickOutside";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import { Ubuntu, Sansita } from "next/font/google";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -558,23 +559,26 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       >
         {/* <!-- SIDEBAR HEADER --> */}
         <div className="flex w-full items-center justify-between gap-2 px-6 py-4 lg:py-5 xl:py-6">
-          <Link className="w-full" href="/">
+          <Link className="flex w-full items-center gap-2" href="/">
             <Image
-              width={200}
-              height={30}
-              src={"/images/logo.png"}
+              width={48}
+              height={48}
+              src={"/images/logo.svg"}
               alt="Logo"
               priority
-              className="dark:hidden"             
+              className="dark:hidden"
             />
             <Image
-              width={200}
-              height={30}
-              src={"/images/logo.png"}
+              width={48}
+              height={48}
+              src={"/images/logo.svg"}
               alt="Logo"
               priority
-              className="hidden dark:block"             
+              className="hidden dark:block"
             />
+            <h4 className="font-font-satoshi text-3xl font-bold  text-[#0000FE]">
+              AIOps
+            </h4>
           </Link>
 
           <button

@@ -1,9 +1,9 @@
 import axios from "axios";
 import { setAuthToken } from "./setAuthToken";
+import { baseUrl } from "./config";
 
 export const api = axios.create({
-  // baseURL: "https://api.intelliphy.ai/api",
-  baseURL: "http://localhost:6009/api",
+  baseURL: baseUrl,
   headers: {
     "Content-Type": "application/json",
   },
