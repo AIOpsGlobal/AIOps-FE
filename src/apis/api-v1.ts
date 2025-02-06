@@ -122,16 +122,21 @@ export const topUpTokens = async (modelId: string, token: number) => {
 };
 
 // Ai Explorer : Text
-export const generateAiText = async (model: string, prompt: string) => {
+export const generateAiText = async (
+  model: string,
+  prompt: string,
+  systemPrompt: string,
+) => {
   try {
     const { data } = await api.post("/explorer/text/generate", {
       model,
       prompt,
+      systemPrompt,
     });
 
     return data;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error in generating ai text: ", error);
-    return false;
+    return { error: true, msg: error.response.data.msg };
   }
 };

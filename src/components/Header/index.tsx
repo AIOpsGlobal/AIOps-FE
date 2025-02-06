@@ -24,13 +24,13 @@ const Header = (props: {
 
   const handleDisconnect = () => {
     disconnect();
+    props.setConnected(false);
+    router.push("/");
+    localStorage.removeItem("authToken");
   };
 
   useEffect(() => {
     props.setConnected(isConnected);
-    if (!isConnected) {
-      router.push("/");
-    }
   }, [isConnected]);
 
   const formatPath = (path: string) => {

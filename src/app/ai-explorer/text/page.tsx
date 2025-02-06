@@ -6,6 +6,7 @@ import SelectGroupAIModel from "@/components/FormElements/SelectGroup/SelectGrou
 import { IChat, IModel } from "@/types";
 import { generateAiText, getAiModels } from "@/apis/api-v1";
 import toast from "react-hot-toast";
+import ReactMarkdown from "react-markdown";
 
 const initialState = {
   temperature: 0,
@@ -21,6 +22,7 @@ const AIExplorerTextPage = () => {
   const [models, setModels] = useState<IModel[] | null>(null);
   const [isSelectedModel, setSelectedModel] = useState<string | null>(null);
   const [prompt, setPrompt] = useState<string | null>(null);
+  const [systemPrompt, setSystemPrompt] = useState<string>("");
   const [chats, setChats] = useState<IChat[] | null>(null);
 
   const {
@@ -35,6 +37,7 @@ const AIExplorerTextPage = () => {
   useEffect(() => {
     (async () => {
       const _ = await getAiModels();
+      console.log("models", _);
       setModels(_);
     })();
   }, []);
@@ -51,6 +54,7 @@ const AIExplorerTextPage = () => {
       toast.error("Enter your sentence");
       return;
     }
+    const loading = toast.loading("Loading");
     // Add a chat
     const chatObj: IChat = {
       type: "user",
@@ -68,8 +72,16 @@ const AIExplorerTextPage = () => {
       setChats((prevChats) => [...(prevChats || []), chatObj]);
     }
     setPrompt(null);
-    const resp: IChat = await generateAiText(isSelectedModel, prompt);
-    if (!resp) toast.error("Text Generation Failed");
+    const resp: any = await generateAiText(
+      isSelectedModel,
+      prompt,
+      systemPrompt,
+    );
+    if (resp.error) {
+      toast.error(resp.msg, { id: loading });
+      return;
+    }
+    toast.dismiss(loading);
     resp.type = "assistant";
     setChats((prevChats) => [...(prevChats || []), resp]);
   };
@@ -84,30 +96,30 @@ const AIExplorerTextPage = () => {
     chatContent = chats.map((chat, idx) => {
       if (chat.type === "assistant") {
         return (
-          <div className="flex items-start p-1" key={idx}>
+          <div className="mb-4 flex items-start p-1" key={idx}>
             <Image
               className="mx-1 my-2"
-              src={"/images/ai-explorer/icon-mistral.png"}
+              src={"/images/ai-explorer/logo-small.png"}
               alt="Logo"
-              width={20}
-              height={15}
+              width={25}
+              height={20}
             />
-            <div className="max-w-[500px] bg-gray p-2 text-sm font-bold">
-              {chat.content}
+            <div className="max-w-[500px] bg-gray p-2 text-sm font-medium">
+              <ReactMarkdown>{chat.content}</ReactMarkdown>
             </div>
           </div>
         );
       } else {
         return (
-          <div className="flex items-end justify-end p-1" key={idx}>
+          <div className="mb-4 flex items-end justify-end p-1" key={idx}>
             <Image
               className="mx-1 my-2"
               src={"/images/ai-explorer/icon-mistral.png"}
               alt="Logo"
-              width={20}
-              height={15}
+              width={25}
+              height={20}
             />
-            <div className="max-w-[500px] bg-gray p-2 text-sm font-bold">
+            <div className="max-w-[500px] bg-gray p-2 text-sm font-medium">
               {chat.content}
             </div>
           </div>
@@ -118,6 +130,7 @@ const AIExplorerTextPage = () => {
 
   return (
     <div className="mx-auto flex flex-col sm:flex-row">
+      {/* Left section */}
       <div
         className="
             mt-5
@@ -140,24 +153,24 @@ const AIExplorerTextPage = () => {
             width={50}
             height={32}
           /> */}
-           <Image
-              width={50}
-              height={20}
-              src={"/images/logo/LogoGray.png"}
-              alt="Logo"
-              className="my-5 mx-2"
-            />            
+          <Image
+            width={50}
+            height={20}
+            src={"/images/logo/LogoGray.png"}
+            alt="Logo"
+            className="mx-2 my-5"
+          />
           <div className="my-5 flex flex-col dark:text-white">
             <p className="text-large font-bold">
               {selectedModel ? selectedModel[0].name : "Choose your AI Model"}
             </p>
-            <div className="flex items-center justify-start">
+            <div className="flex items-center  justify-start">
               <p className="mx-1 bg-gray-4 px-1 text-sm font-medium">Text</p>
               <p className="mx-1 bg-gray-4 px-1 text-sm font-medium">Meta</p>
             </div>
           </div>
         </div>
-        <div className="flex h-[65vh] w-full flex-col gap-2 border p-5">
+        <div className="  flex h-[65vh] w-full flex-col gap-2 overflow-y-scroll border p-5">
           <div className="flex items-start p-1">
             <Image
               className="mx-1 my-2"
@@ -166,14 +179,14 @@ const AIExplorerTextPage = () => {
               width={25}
               height={20}
             />
-            <div className="bg-gray dark:bg-[#122031] py-2 text-sm font-bold">
-              what can i help you?
+            <div className="bg-gray py-2 text-sm font-medium dark:bg-[#122031]">
+              what can i help you with?
             </div>
           </div>
           {chatContent}
         </div>
         {/* input box */}
-        <div className="relative">
+        <div className=" relative">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -202,6 +215,7 @@ const AIExplorerTextPage = () => {
           </form>
         </div>
       </div>
+      {/* Right sidebar */}
       <div
         className="
             mt-5
@@ -230,7 +244,8 @@ const AIExplorerTextPage = () => {
           <textarea
             rows={5}
             placeholder="Input Something..."
-            value={""}
+            value={systemPrompt as string}
+            onChange={(e) => setSystemPrompt(e.target.value)}
             style={{ resize: "none" }}
             className="w-[100%] rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
           />

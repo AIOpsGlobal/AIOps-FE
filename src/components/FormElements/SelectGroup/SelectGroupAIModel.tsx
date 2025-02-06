@@ -1,6 +1,7 @@
 "use client";
 import { IModel } from "@/types";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 interface ISelector {
   models: IModel[] | null;
@@ -21,6 +22,10 @@ const SelectGroupAIModel = ({ models, handleChangeModel }: ISelector) => {
         <select
           value={selectedOption}
           onChange={(e) => {
+            if (e.target.value == "67a4ca18ada9167787056d99") {
+              toast.error("Not Available");
+              return;
+            }
             setSelectedOption(e.target.value);
             handleChangeModel(e.target.value);
             changeTextColor();
@@ -29,7 +34,9 @@ const SelectGroupAIModel = ({ models, handleChangeModel }: ISelector) => {
             isOptionSelected ? "text-dark dark:text-white" : ""
           }`}
         >
-          <option value="Default">Choose the Model</option>
+          <option value="" disabled hidden>
+            Choose the Model
+          </option>
           {models &&
             models.length > 0 &&
             models.map((model, idx) => (
