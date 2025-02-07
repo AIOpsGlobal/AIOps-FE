@@ -21,8 +21,10 @@ if (!projectId) {
 }
 
 const metadata = {
-  name: "Intelliphy",
-  description: "AI marketplace",
+  name: "AIOps - Building a Global DeOS to Redefine AI Workload Orchestration.",
+  description:
+    "At AIOps, we're transforming this landscape by creating the first decentralized GPU computing network. By connecting unused GPU power worldwide, we reduce AI computing costs by 70% while enabling GPU owners to earn from their idle resources.",
+
   url: "https://web3modal.com",
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };

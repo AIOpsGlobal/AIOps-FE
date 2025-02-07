@@ -1,15 +1,8 @@
 // src/app/page.tsx
 
 import Login from "@/components/Login";
-import { Metadata } from "next";
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import React from "react";
 import Image from "next/image";
-
-export const metadata: Metadata = {
-  title: "AIOps",
-  description: "Rebranding Enterprise solutions",
-};
 
 export default function Home() {
   return (
