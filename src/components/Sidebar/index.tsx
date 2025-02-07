@@ -561,24 +561,21 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <div className="flex w-full items-center justify-between gap-2 px-6 py-4 lg:py-5 xl:py-6">
           <Link className="flex w-full items-center gap-2" href="/">
             <Image
-              width={48}
-              height={48}
-              src={"/images/logo.svg"}
+              width={135}
+              height={30}
+              src={"/images/logo/logo_full.png"}
               alt="Logo"
               priority
               className="dark:hidden"
             />
             <Image
-              width={48}
-              height={48}
-              src={"/images/logo.svg"}
+              width={135}
+              height={30}
+              src={"/images/logo/logo_full.png"}
               alt="Logo"
               priority
               className="hidden dark:block"
             />
-            <h4 className="font-font-satoshi text-3xl font-bold  text-[#0000FE]">
-              AIOps
-            </h4>
           </Link>
 
           <button

@@ -99,7 +99,7 @@ const AIExplorerTextPage = () => {
           <div className="mb-4 flex items-start p-1" key={idx}>
             <Image
               className="mx-1 my-2"
-              src={"/images/ai-explorer/logo-small.png"}
+              src={"/images/logo/logo_half.png"}
               alt="Logo"
               width={25}
               height={20}
@@ -154,9 +154,13 @@ const AIExplorerTextPage = () => {
             height={32}
           /> */}
           <Image
-            width={50}
+            width={35}
             height={20}
-            src={"/images/logo/LogoGray.png"}
+            src={
+              selectedModel
+                ? (selectedModel[0].image ?? "/images/logo/logo_half_gray.png")
+                : "/images/logo/logo_half_gray.png"
+            }
             alt="Logo"
             className="mx-2 my-5"
           />
@@ -165,21 +169,21 @@ const AIExplorerTextPage = () => {
               {selectedModel ? selectedModel[0].name : "Choose your AI Model"}
             </p>
             <div className="flex items-center  justify-start">
-              <p className="mx-1 bg-gray-4 px-1 text-sm font-medium">Text</p>
-              <p className="mx-1 bg-gray-4 px-1 text-sm font-medium">Meta</p>
+              <p className="bg-gray-4 px-1 text-sm font-medium">Text</p>
+              {/* <p className="bg-gray-4 px-1 text-sm font-medium">Meta</p> */}
             </div>
           </div>
         </div>
         <div className="  flex h-[65vh] w-full flex-col gap-2 overflow-y-scroll border p-5">
-          <div className="flex items-start p-1">
+          <div className="flex items-center gap-2 p-1">
             <Image
-              className="mx-1 my-2"
-              src={"/images/ai-explorer/logo-small.png"}
+              className=""
+              src={"/images/logo/logo_half.png"}
               alt="Logo"
               width={25}
-              height={20}
+              height={25}
             />
-            <div className="bg-gray py-2 text-sm font-medium dark:bg-[#122031]">
+            <div className="rounded-sm bg-gray p-2 text-sm font-medium dark:bg-[#122031]">
               what can i help you with?
             </div>
           </div>

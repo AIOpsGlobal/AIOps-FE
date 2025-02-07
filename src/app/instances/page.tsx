@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAccount } from "wagmi";
+import logo_half from "../../../public/images/logo/logo_half_gray.png";
+import logo_half_black from "../../../public/images/logo/logo_half_black.png";
 
 const InstancePage = () => {
   const { address } = useAccount();
@@ -26,25 +28,21 @@ const InstancePage = () => {
     <>
       <div className="mx-auto max-w-7xl">
         <div
-          className="justify-content-center flex flex-col items-center text-center gap-3"
+          className="justify-content-center flex flex-col items-center gap-3 text-center"
           style={{ transform: "translate(0px, 90%)" }}
         >
-          <div className="h-[70px] w-[70px]">
+          <div className="relative h-[65px] w-[55px]">
             <Image
-              width={80}
-              height={80}
-              src={"/images/logo/LogoGray.png"}
+              src={logo_half}
               alt="Logo"
-              className="dark:hidden"
-              style={{ width: "auto", height: "auto" }}
+              fill
+              className="object-contain dark:hidden"
             />
             <Image
-              width={80}
-              height={80}
-              src={"/images/logo/LogoforDark.png"}
+              fill
+              src={logo_half_black}
               alt="Logo"
-              className="hidden dark:block"
-              style={{ width: "auto", height: "auto" }}
+              className="hidden object-contain dark:block"
             />
           </div>
           <p className="text-bold max-w-3xl text-base">
