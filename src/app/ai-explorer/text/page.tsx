@@ -198,11 +198,11 @@ const AIExplorerTextPage = () => {
               placeholder="Your sentence here..."
               value={prompt ? prompt : ""}
               onChange={(e) => setPrompt(e.target.value)}
-              className="w-full border-[1.5px] border-stroke bg-transparent px-5.5 py-2 pr-10 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+              className="w-full border-[1.5px] border-stroke bg-transparent px-5.5 py-2 pr-[5%]  text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
             />
             <button
               type="submit"
-              className="absolute right-10 top-1/2 -translate-y-1/2"
+              className="absolute right-5 top-1/2 -translate-y-1/2"
             >
               <Image
                 className="mx-1 my-2"

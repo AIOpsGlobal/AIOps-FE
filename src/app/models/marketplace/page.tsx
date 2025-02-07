@@ -86,26 +86,27 @@ const MarketplacePage = () => {
                 <Link
                   href={`details/${model._id}`}
                   className="ease mx-3 transform transition-transform duration-300 hover:-translate-y-[5px]"
-                  key={index}
+                  key={index.toString()}
                 >
                   <div className="my-5 flex w-full flex-col rounded-[10px] bg-gray-200 p-2 shadow-2 dark:bg-gray-400">
-                    <div className="flex">
-                      <Image
-                        className="m-4"
-                        src={"/images/ai-explorer/icon-meta.png"}
-                        alt="Logo"
-                        width={50}
-                        height={32}
-                      />
-                      <div className="my-5 flex flex-col dark:text-white">
+                    <div className="flex gap-2 py-2">
+                      <div className="relative  h-[48px] w-[48px]">
+                        <Image
+                          className="object-contain"
+                          src={model.image}
+                          fill
+                          alt="Logo"
+                        />
+                      </div>
+                      <div className="flex  flex-col gap-1 dark:text-white">
                         <p className="text-large font-bold">{model.name}</p>
                         <div className="flex items-center justify-start">
-                          <p className="mx-1 bg-gray-4 px-1 text-sm font-medium">
+                          <p className=" bg-gray-4 px-1 text-sm font-medium">
                             {model.type}
                           </p>
-                          <p className="mx-1 bg-gray-4 px-1 text-sm font-medium">
+                          {/* <p className="mx-1 bg-gray-4 px-1 text-sm font-medium">
                             Meta
-                          </p>
+                          </p> */}
                         </div>
                       </div>
                     </div>
@@ -119,7 +120,10 @@ const MarketplacePage = () => {
                         {model.downloads}
                       </div>
                       <div className="text-xs text-dark dark:text-white">
-                        Update at {model.updated_at}
+                        Update at{" "}
+                        {new Date(
+                          model.updated_at.toString(),
+                        ).toLocaleDateString()}
                       </div>
                     </div>
                   </div>

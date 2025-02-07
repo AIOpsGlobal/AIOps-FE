@@ -32,6 +32,7 @@ export interface IModel {
   pricePerFineTune: number;
   downloads: number;
   link: string;
+  image: string;
   type: string;
   created_at: string;
   updated_at: string;
