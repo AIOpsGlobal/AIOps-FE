@@ -13,11 +13,14 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AIOps",
   description: "Rebranding Enterprise solutions",
+  metadataBase: new URL("https://app.aiops.global"),
+  
   openGraph: {
     title:
       "AIOps - Building a Global DeOS to Redefine AI Workload Orchestration.",
     description:
       "At AIOps, we're transforming this landscape by creating the first decentralized GPU computing network. By connecting unused GPU power worldwide, we reduce AI computing costs by 70% while enabling GPU owners to earn from their idle resources.",
+      images:"https://app.aiops.global/opengraph-image.png"
   },
 };
 
