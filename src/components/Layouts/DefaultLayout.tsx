@@ -78,9 +78,7 @@ export default function DefaultLayout({
                 {/* <!-- ===== Header End ===== --> */}
 
                 {/* <!-- ===== Main Content Star ===== --> */}
-                <main>
-                  <div className="">{children}</div>
-                </main>
+                <main className="flex h-full flex-col">{children}</main>
                 {/* <!-- ===== Main Content End ===== --> */}
               </div>
               {/* <!-- ===== Content Area End ===== --> */}

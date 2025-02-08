@@ -24,19 +24,17 @@ export const AppProvider = ({ children }: IAppProviderProps) => {
         setAuthToken(localStorage.getItem("authToken"));
         // get User Info
         (async () => {
+          router.push("/instances");
           const _ = await getCurrentUser();
           setUser(_);
-
-          router.push("/instances");
         })();
       } else {
         // Auth Again
         (async () => {
+          router.push("/instances");
           await auth(address);
           const _ = await getCurrentUser();
           setUser(_);
-
-          router.push("/instances");
         })();
       }
     }

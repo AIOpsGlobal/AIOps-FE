@@ -129,7 +129,7 @@ const AIExplorerTextPage = () => {
   }
 
   return (
-    <div className="mx-auto flex flex-col sm:flex-row">
+    <div className="flex w-full flex-col sm:flex-row">
       {/* Left section */}
       <div
         className="
