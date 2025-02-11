@@ -83,8 +83,17 @@ const Header = ({
                 }}
               >
                 <Image
-                  className="mx-1 my-2"
+                  className="mx-1 my-2 dark:hidden"
                   src={"/images/header_logo.png"}
+                  alt="Logo"
+                  width={20}
+                  height={15}
+                />
+                <Image
+                  className="mx-1 my-2 hidden dark:flex"
+                  src={
+                    "https://i.ibb.co/BHKWH3Vj/header-logo-dark-version.webp"
+                  }
                   alt="Logo"
                   width={20}
                   height={15}
@@ -98,10 +107,8 @@ const Header = ({
         </div>
 
         <div className="flex items-center justify-normal gap-2 2xsm:gap-4 lg:w-full lg:justify-between xl:w-auto xl:justify-normal">
-          <ul className="flex items-center gap-2 2xsm:gap-4">
-            {/* Dark Mode Toggle */}
-            <DarkModeSwitcher />
-          </ul>
+          {/* Dark Mode Toggle */}
+          <DarkModeSwitcher />
 
           {/* User Area */}
           <DropdownUser
