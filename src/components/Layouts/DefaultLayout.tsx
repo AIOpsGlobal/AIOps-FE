@@ -3,21 +3,19 @@ import React, { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 
-import { createWeb3Modal } from "@web3modal/wagmi/react";
-import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
+import { createAppKit } from "@reown/appkit/react";
+import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
 
-import { WagmiProvider } from "wagmi";
-import { sepolia } from "wagmi/chains";
+import { type Config, cookieToInitialState, WagmiProvider } from "wagmi";
+import { sepolia } from "@reown/appkit/networks";
+import { projectId, wagmiAdapter } from "@/config";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppProvider } from "./AppProvider";
 
 const queryClient = new QueryClient();
-
-const projectId =
-  process.env.NEXT_PUBLIC_INFURA_ID || "cd3cc4d280e358f5e9be96987a8aca89";
 if (!projectId) {
-  throw new Error("VITE_PROJECT_ID is not set");
+  throw new Error("Project ID is not defined");
 }
 
 const metadata = {
@@ -29,42 +27,57 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
-const chains = [sepolia] as const;
-const config = defaultWagmiConfig({
-  chains,
+createAppKit({
+  adapters: [wagmiAdapter],
+  networks: [sepolia],
+  metadata: metadata,
   projectId,
-  metadata,
-});
-
-createWeb3Modal({
-  wagmiConfig: config,
-  projectId,
-  enableAnalytics: true,
-  enableOnramp: true,
+  features: {
+    connectMethodsOrder: ["wallet"],
+    email: true, // default to true
+    socials: [
+      "google",
+      // "x",
+      // "github",
+      // "discord",
+      // "apple",
+      // "facebook",
+      // "farcaster",
+    ],
+    emailShowWallets: true, // default to true
+    analytics: true,
+  },
+  allWallets: "SHOW", // default to SHOW
 });
 
 export default function DefaultLayout({
   children,
+  cookies,
 }: {
   children: React.ReactNode;
+  cookies: string | null;
 }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isConnected, setIsConnected] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const initialState = cookieToInitialState(
+    wagmiAdapter.wagmiConfig as Config,
+    cookies,
+  );
 
   return (
     <>
-      <WagmiProvider config={config}>
+      <WagmiProvider
+        config={wagmiAdapter.wagmiConfig as Config}
+        initialState={initialState}
+      >
         <QueryClientProvider client={queryClient}>
           <AppProvider>
             {/* <!-- ===== Page Wrapper Star ===== --> */}
-            <div className="flex h-screen overflow-hidden">
+            <div className="relative flex h-screen w-full overflow-hidden">
               {/* <!-- ===== Sidebar Star ===== --> */}
-              {isConnected && (
-                <Sidebar
-                  sidebarOpen={sidebarOpen}
-                  setSidebarOpen={setSidebarOpen}
-                />
-              )}
+              <Sidebar
+                sidebarOpen={sidebarOpen}
+                setSidebarOpen={setSidebarOpen}
+              />
               {/* <!-- ===== Sidebar End ===== --> */}
 
               {/* <!-- ===== Content Area Star ===== --> */}
@@ -73,7 +86,6 @@ export default function DefaultLayout({
                 <Header
                   sidebarOpen={sidebarOpen}
                   setSidebarOpen={setSidebarOpen}
-                  setConnected={setIsConnected}
                 />
                 {/* <!-- ===== Header End ===== --> */}
 

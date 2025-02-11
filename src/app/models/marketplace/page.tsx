@@ -11,9 +11,11 @@ import ButtonSmall from "@/components/Buttons/ButtonSmall";
 import { IModel } from "@/types";
 
 import { getAiModels } from "@/apis/api-v1";
+import Loader from "@/components/common/Loader";
 
 const MarketplacePage = () => {
   const [models, setModels] = useState<IModel[] | null>(null);
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     (async () => {
@@ -22,6 +24,9 @@ const MarketplacePage = () => {
     })();
   }, []);
 
+  if (!models) {
+    return <Loader />;
+  }
   return (
     <div
       className="
@@ -36,7 +41,7 @@ const MarketplacePage = () => {
     >
       <div className="flex flex-col">
         <div className="m-5 mb-0">
-          <SearchForm />
+          <SearchForm search={search} setSearch={setSearch} />
         </div>
         <div className="flex flex-col justify-between sm:flex-row sm:items-center">
           <div className="my-3 ml-2 sm:ml-5">
@@ -81,53 +86,58 @@ const MarketplacePage = () => {
         <div className="grid p-3 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
           {models &&
             models.length > 0 &&
-            models.map((model, index) => (
-              <Link
-                href={`details/${model._id}`}
-                className="ease mx-3 transform transition-transform duration-300 hover:-translate-y-[5px]"
-                key={index.toString()}
-              >
-                <div className="my-5 flex w-full flex-col rounded-[10px] bg-gray-200 p-2 shadow-2 dark:bg-gray-400">
-                  <div className="flex gap-2 py-2">
-                    <div className="relative  h-[48px] w-[48px]">
-                      <Image
-                        className="object-contain"
-                        src={model.image}
-                        fill
-                        alt="Logo"
-                      />
-                    </div>
-                    <div className="flex  flex-col gap-1 dark:text-white">
-                      <p className="text-large font-bold">{model.name}</p>
-                      <div className="flex items-center justify-start">
-                        <p className=" bg-gray-4 px-1 text-sm font-medium">
-                          {model.type}
-                        </p>
-                        {/* <p className="mx-1 bg-gray-4 px-1 text-sm font-medium">
+            models
+              .filter((item) =>
+                item.name.toLowerCase().includes(search.toLowerCase()),
+              )
+              .map((model, index) => (
+                <Link
+                  prefetch={true}
+                  href={`details/${model._id}`}
+                  className="ease mx-3 transform transition-transform duration-300 hover:-translate-y-[5px]"
+                  key={index.toString()}
+                >
+                  <div className="my-5 flex w-full flex-col rounded-[10px] bg-gray-200 p-2 shadow-2 dark:bg-gray-400">
+                    <div className="flex gap-2 py-2">
+                      <div className="relative  h-[48px] w-[48px]">
+                        <Image
+                          className="object-contain"
+                          src={model.image}
+                          fill
+                          alt="Logo"
+                        />
+                      </div>
+                      <div className="flex  flex-col gap-1 dark:text-white">
+                        <p className="text-large font-bold">{model.name}</p>
+                        <div className="flex items-center justify-start">
+                          <p className=" bg-gray-4 px-1 text-sm font-medium">
+                            {model.type}
+                          </p>
+                          {/* <p className="mx-1 bg-gray-4 px-1 text-sm font-medium">
                             Meta
                           </p> */}
+                        </div>
+                      </div>
+                    </div>
+
+                    <p className="mx-2 line-clamp-2 text-xs text-dark dark:text-white">
+                      {model.description}
+                    </p>
+
+                    <div className="flex items-center justify-between p-2">
+                      <div className="text-xs text-dark dark:text-white">
+                        {model.downloads}
+                      </div>
+                      <div className="text-xs text-dark dark:text-white">
+                        Update at{" "}
+                        {new Date(
+                          model.updated_at.toString(),
+                        ).toLocaleDateString()}
                       </div>
                     </div>
                   </div>
-
-                  <p className="mx-2 line-clamp-2 text-xs text-dark dark:text-white">
-                    {model.description}
-                  </p>
-
-                  <div className="flex items-center justify-between p-2">
-                    <div className="text-xs text-dark dark:text-white">
-                      {model.downloads}
-                    </div>
-                    <div className="text-xs text-dark dark:text-white">
-                      Update at{" "}
-                      {new Date(
-                        model.updated_at.toString(),
-                      ).toLocaleDateString()}
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
         </div>
       </div>
     </div>

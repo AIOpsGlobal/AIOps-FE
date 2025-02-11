@@ -8,6 +8,7 @@ import SidebarItem from "@/components/Sidebar/SidebarItem";
 import ClickOutside from "@/components/ClickOutside";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { Ubuntu, Sansita } from "next/font/google";
+import { AnimatePresence, motion } from "framer-motion";
 import path from "path";
 import Loader from "../common/Loader";
 
@@ -545,94 +546,92 @@ const menuGroups = [
   },
 ];
 
+const container = {
+  hidden: { opacity: 1 },
+  show: {
+    opacity: 1,
+    transition: {
+      type: "tween",
+      duration: 0.5,
+      when: "beforeChildren", //use this instead of delay
+      staggerChildren: 0.05,
+    },
+  },
+};
+
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const pathname = usePathname();
 
   const [pageName, setPageName] = useLocalStorage("selectedMenu", "dashboard");
 
-  if (pathname == "/") {
-    return (
-      <div className="h-screen w-screen">
-        {" "}
-        <Loader />
-      </div>
-    );
-  } else {
-    return (
-      <ClickOutside onClick={() => setSidebarOpen(false)}>
-        <aside
-          className={`absolute left-0 top-0 z-9999 flex h-screen w-70 flex-col overflow-y-hidden border-r border-stroke bg-white dark:border-stroke-dark dark:bg-gray-dark lg:static lg:translate-x-0 ${
-            sidebarOpen
-              ? "translate-x-0 duration-300 ease-linear"
-              : "-translate-x-full"
-          }`}
+  return (
+    <aside
+      className={`absolute   top-0 z-9999  h-screen  flex-col border-r border-stroke bg-white duration-300 ease-linear dark:border-stroke-dark dark:bg-gray-dark lg:relative  ${
+        sidebarOpen ? "w-70" : "w-0 "
+      } ${pathname == "/" ? "hidden" : "flex"}`}
+    >
+      {/* <!-- SIDEBAR HEADER --> */}
+      <div className="flex w-full items-center justify-between gap-2 px-6 py-4 lg:py-5 xl:py-6">
+        <Link className="flex w-full items-center gap-2" href="/">
+          <Image
+            width={135}
+            height={30}
+            src={"/images/logo/logo_full.png"}
+            alt="Logo"
+            priority
+            className="dark:hidden"
+          />
+          <Image
+            width={135}
+            height={30}
+            src={"/images/logo/logo_full.png"}
+            alt="Logo"
+            priority
+            className="hidden dark:block"
+          />
+        </Link>
+
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="block lg:hidden"
         >
-          {/* <!-- SIDEBAR HEADER --> */}
-          <div className="flex w-full items-center justify-between gap-2 px-6 py-4 lg:py-5 xl:py-6">
-            <Link className="flex w-full items-center gap-2" href="/">
-              <Image
-                width={135}
-                height={30}
-                src={"/images/logo/logo_full.png"}
-                alt="Logo"
-                priority
-                className="dark:hidden"
-              />
-              <Image
-                width={135}
-                height={30}
-                src={"/images/logo/logo_full.png"}
-                alt="Logo"
-                priority
-                className="hidden dark:block"
-              />
-            </Link>
+          <svg
+            className="fill-current"
+            width="20"
+            height="18"
+            viewBox="0 0 20 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 8.175H2.98748L9.36248 1.6875C9.69998 1.35 9.69998 0.825 9.36248 0.4875C9.02498 0.15 8.49998 0.15 8.16248 0.4875L0.399976 8.3625C0.0624756 8.7 0.0624756 9.225 0.399976 9.5625L8.16248 17.4375C8.31248 17.5875 8.53748 17.7 8.76248 17.7C8.98748 17.7 9.17498 17.625 9.36248 17.475C9.69998 17.1375 9.69998 16.6125 9.36248 16.275L3.02498 9.8625H19C19.45 9.8625 19.825 9.4875 19.825 9.0375C19.825 8.55 19.45 8.175 19 8.175Z"
+              fill=""
+            />
+          </svg>
+        </button>
+      </div>
+      {/* <!-- SIDEBAR HEADER --> */}
 
-            <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="block lg:hidden"
-            >
-              <svg
-                className="fill-current"
-                width="20"
-                height="18"
-                viewBox="0 0 20 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M19 8.175H2.98748L9.36248 1.6875C9.69998 1.35 9.69998 0.825 9.36248 0.4875C9.02498 0.15 8.49998 0.15 8.16248 0.4875L0.399976 8.3625C0.0624756 8.7 0.0624756 9.225 0.399976 9.5625L8.16248 17.4375C8.31248 17.5875 8.53748 17.7 8.76248 17.7C8.98748 17.7 9.17498 17.625 9.36248 17.475C9.69998 17.1375 9.69998 16.6125 9.36248 16.275L3.02498 9.8625H19C19.45 9.8625 19.825 9.4875 19.825 9.0375C19.825 8.55 19.45 8.175 19 8.175Z"
-                  fill=""
-                />
-              </svg>
-            </button>
-          </div>
-          {/* <!-- SIDEBAR HEADER --> */}
-
-          <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
-            {/* <!-- Sidebar Menu --> */}
-            <nav className="mt-1 px-4 lg:px-6">
-              {menuGroups.map((group, groupIndex) => (
-                <div key={groupIndex}>
-                  <ul className="mb-6 flex flex-col gap-2">
-                    {group.menuItems.map((menuItem, menuIndex) => (
-                      <SidebarItem
-                        key={menuIndex}
-                        item={menuItem}
-                        pageName={pageName}
-                        setPageName={setPageName}
-                      />
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </nav>
-            {/* <!-- Sidebar Menu --> */}
-          </div>
-        </aside>
-      </ClickOutside>
-    );
-  }
+      {/* <!-- Sidebar Menu --> */}
+      <nav className=" mt-1 px-4 lg:px-6">
+        <motion.ul
+          variants={container}
+          animate={sidebarOpen ? "show" : "hidden"}
+          className="flex flex-col gap-2"
+        >
+          {menuGroups[0].menuItems.map((menuItem, menuIndex) => (
+            <SidebarItem
+              key={menuIndex}
+              item={menuItem}
+              pageName={pageName}
+              setPageName={setPageName}
+            />
+          ))}
+        </motion.ul>
+      </nav>
+      {/* <!-- Sidebar Menu --> */}
+    </aside>
+  );
 };
 
 export default Sidebar;

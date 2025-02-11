@@ -33,7 +33,7 @@ const BillingPage = () => {
       const _ = await getBillings();
       setBillings(_);
     })();
-  }, []);
+  }, [user]);
 
   const handleAddCredits = async () => {
     try {
@@ -97,9 +97,7 @@ const BillingPage = () => {
   return (
     <div
       className="
-        mx-auto
         mt-5
-        max-w-7xl
         overflow-auto
         rounded-[10px]
         bg-white
@@ -110,17 +108,19 @@ const BillingPage = () => {
       "
     >
       <div className="flex flex-col">
-        <p className="m-5 text-body-2xlg font-bold text-dark">Billing</p>
+        <p className="m-5 text-body-2xlg font-bold text-dark dark:text-lime-50">
+          Billing
+        </p>
         <div className="flex">
           <div className="mx-5 mb-3 w-64 rounded-lg border border-gray-300 p-3">
             <h2 className="text-md font-bold">Balance</h2>
-            <p className="text-lg font-bold text-gray-600 pt-2">
+            <p className="pt-2 text-lg font-bold text-gray-600">
               {user ? user.balance : "0.00"}
             </p>
           </div>
           <div className="mx-5 mb-3 w-64 rounded-lg border border-gray-300 p-3">
             <h2 className="text-md font-bold">Tokens</h2>
-            <p className="text-lg font-bold text-gray-600 pt-2">
+            <p className="pt-2 text-lg font-bold text-gray-600">
               {user ? user.tokens : "0.00"}
             </p>
           </div>
@@ -152,13 +152,13 @@ const BillingPage = () => {
         <div className="p-4">
           <div className="grid grid-cols-8 border-t border-gray-300 px-4 py-4.5 dark:border-dark-3 md:px-6 2xl:px-7.5">
             <div className="col-span-3 mb-10 flex items-center sm:col-span-3">
-              <p className="text-sm md:text-md">Date</p>
+              <p className="md:text-md text-sm">Date</p>
             </div>
             <div className="col-span-3 mb-10 items-center sm:col-span-3">
-              <p className="text-sm md:text-md">Amount</p>
+              <p className="md:text-md text-sm">Amount</p>
             </div>
             <div className="col-span-2 mb-10 flex items-center sm:col-span-2">
-              <p className="text-sm md:text-md">Currency</p>
+              <p className="md:text-md text-sm">Currency</p>
             </div>
             {billings &&
               billings.length > 0 &&

@@ -9,6 +9,7 @@ import React from "react";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import { Toaster } from "react-hot-toast";
 import { Metadata } from "next";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: "AIOps",
@@ -26,10 +27,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersObj = headers();
+  const cookies = headersObj.get("cookie");
   return (
     <html lang="en">
       <body suppressHydrationWarning={false}>
-        <DefaultLayout>
+        <DefaultLayout cookies={cookies}>
           {children}
 
           <Toaster toastOptions={{ position: "top-right" }} />

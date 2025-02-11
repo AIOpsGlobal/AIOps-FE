@@ -2,7 +2,7 @@ import TableCluster from "@/components/Tables/TableCluster";
 
 const CalendarPage = () => {
   return (
-    <div className="mx-auto">
+    <div className="">
       <div
         className="
             mt-5
