@@ -28,7 +28,6 @@ const SettingsAccountPage = () => {
   return (
     <div
       className="
-        mx-auto
         mt-5
         h-[80vh]
         max-w-7xl
@@ -116,7 +115,7 @@ const SettingsAccountPage = () => {
           </div>
 
           <div
-            className={`flex mx-2 mt-12 h-fit cursor-pointer items-center justify-center rounded-[5px] bg-[#0000FE] px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10`}
+            className={`mx-2 mt-12 flex h-fit cursor-pointer items-center justify-center rounded-[5px] bg-[#0000FE] px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10`}
             onClick={handleUpdateProfile}
           >
             Save

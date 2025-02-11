@@ -3,12 +3,18 @@ import Link from "next/link";
 import Image from "next/image";
 import ClickOutside from "@/components/ClickOutside";
 
-const DropdownUser = ({address, onDisconnect} : {address: string, onDisconnect: () => void}) => {
+const DropdownUser = ({
+  address,
+  onDisconnect,
+}: {
+  address: string;
+  onDisconnect: () => void;
+}) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleDisconnect = () => {
     onDisconnect();
-  }
+  };
 
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
@@ -17,9 +23,14 @@ const DropdownUser = ({address, onDisconnect} : {address: string, onDisconnect: 
         className="flex items-center gap-4"
         href="#"
       >
-        <span className="flex items-center gap-2 font-medium text-dark dark:text-dark-6">
-          <span className="hidden lg:block text-[15px]">{address.slice(0, 7)}...{address.slice(address.length - 7, address.length - 1)}</span>
-
+        <div className="flex items-center gap-2 font-medium text-dark dark:text-dark-6">
+          <span
+            suppressHydrationWarning
+            className="hidden text-[15px] lg:block"
+          >
+            {address.slice(0, 7)}...
+            {address.slice(address.length - 7, address.length - 1)}
+          </span>
           <svg
             className={`fill-current duration-200 ease-in ${dropdownOpen && "rotate-180"}`}
             width="20"
@@ -35,7 +46,7 @@ const DropdownUser = ({address, onDisconnect} : {address: string, onDisconnect: 
               fill=""
             />
           </svg>
-        </span>
+        </div>
       </Link>
 
       {/* <!-- Dropdown Star --> */}
@@ -53,9 +64,10 @@ const DropdownUser = ({address, onDisconnect} : {address: string, onDisconnect: 
               </span>
             </span>
           </div> */}
-          <div className="p-1 border-t">
-            <button className="flex w-full items-center gap-2.5 rounded-[7px] p-2.5 text-[15px] font-medium text-dark-4 duration-300 ease-in-out hover:bg-gray-2 hover:text-dark dark:text-dark-6 dark:hover:bg-dark-3 dark:hover:text-white lg:text-base"
-            onClick={handleDisconnect}
+          <div className="border-t p-1">
+            <button
+              className="flex w-full items-center gap-2.5 rounded-[7px] p-2.5 text-[15px] font-medium text-dark-4 duration-300 ease-in-out hover:bg-gray-2 hover:text-dark dark:text-dark-6 dark:hover:bg-dark-3 dark:hover:text-white lg:text-base"
+              onClick={handleDisconnect}
             >
               <svg
                 className="fill-current"
